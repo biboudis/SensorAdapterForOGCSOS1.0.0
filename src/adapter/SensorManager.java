@@ -21,11 +21,11 @@ import adapter.exceptions.ConfigurationException;
 import adapter.sos.exceptions.SOSException;
 
 public class SensorManager {
-	Logger logger = LoggerFactory.getLogger(DavisSensor.class);
-
-	HashMap<String, AbstractSensor> hookedSensors = new HashMap<String, AbstractSensor>();
-
-	int reportingRateInSeconds = Integer.parseInt(Configuration.getInstance().getValue("sos.service.reportingRateInSeconds"));
+	
+	private Logger logger = LoggerFactory.getLogger(DavisSensor.class);
+	private HashMap<String, AbstractSensor> hookedSensors = new HashMap<String, AbstractSensor>();
+	private volatile boolean working = true;
+	private int reportingRateInSeconds = Integer.parseInt(Configuration.getInstance().getValue("sos.service.reportingRateInSeconds"));
 
 	public void StartSensor(String sensorId) {
 		hookedSensors.get(sensorId).start();
@@ -44,13 +44,15 @@ public class SensorManager {
 	{
 		DavisSensor davisSensor = (DavisSensor) hookedSensors.get("davis-drv");
 
+		working = true; 
+		
 		try {
 			davisSensor.registerSensor();
 		} catch (ConfigurationException | SOSException e) {
 			logger.error("RegisterSensor:" + e.getMessage());
 		}
 
-		while (true) {
+		while (working) {
 			try {
 				davisSensor.insertObservation();
 
@@ -59,6 +61,11 @@ public class SensorManager {
 				logger.error("SOS Operation:" + e.getMessage());
 			}
 		}
+	}
+	
+	public void StopReporting()
+	{
+		working = false;
 	}
 
 	public void StopSensors() {
