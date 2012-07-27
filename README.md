@@ -18,7 +18,7 @@ This application will be further developed in order to provide a simple way for 
 	- The 592 version can be found in the accompanying cd
 	- The 593 can be found [here](http://www.davisnet.com/support/weather/downloads/software_direct.asp?SoftCat=1&SoftwareID=211)
 	- the 600 can be found [here](http://www.davisnet.com/support/weather/downloads/software_direct.asp?SoftCat=1&SoftwareID=214)
-3. Plug in the Vantage Pro2 console via the Vantage Pro data logger and connector purchased separately from DAVIS.
+3. Plug in the Vantage Pro2 console via the Vantage Pro data logger and connector [purchased separately](http://www.weathershop.com/davis_weatherlink.htm) from DAVIS.
 
 ##Build
 The application is provided with a maven pom script. All additional dependencies are included.
