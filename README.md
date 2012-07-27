@@ -22,3 +22,7 @@ This application will be further developed in order to provide a simple way for 
 
 ##Build
 The application is provided with a maven pom script. All additional dependencies are included.
+
+##Development
+###Serial protocol
+The serial protocol of the Davis station is fully documented in the [Vantage Pro and Vantage Pro2 Serial Communication Reference Manual](http://www.davisnet.com/support/weather/download/VantageSerialProtocolDocs_v230.pdf). The 2 core features that are taken into consideration are the LOOP command and the wake up protocol. The serial port conversation is implemented imperatively in the run command of the DavisSensor class.
