@@ -1,0 +1,93 @@
+<InsertObservation xmlns="http://www.opengis.net/sos/1.0"
+  xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:om="http://www.opengis.net/om/1.0" xmlns:sos="http://www.opengis.net/sos/1.0"
+  xmlns:sa="http://www.opengis.net/sampling/1.0" xmlns:gml="http://www.opengis.net/gml"
+  xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/sos/1.0 http://schemas.opengis.net/sos/1.0.0/sosInsert.xsd http://www.opengis.net/sampling/1.0 http://schemas.opengis.net/sampling/1.0.0/sampling.xsd http://www.opengis.net/om/1.0 http://schemas.opengis.net/om/1.0.0/extensions/observationSpecialization_override.xsd"
+  service="SOS" version="1.0.0">
+
+	<AssignedSensorId>urn:ogc:object:feature:sensor:IDIRA:Weather-Station-1</AssignedSensorId>
+
+	<om:Observation>
+
+		<!-- Timestamp -->
+		<om:samplingTime>
+	          <gml:TimeInstant>
+	               <gml:timePosition>{TIME}</gml:timePosition>
+	          </gml:TimeInstant>
+		</om:samplingTime>
+
+		<om:procedure xlink:href="urn:ogc:object:feature:sensor:IDIRA:Davis-Weather-Station-1" />
+
+		<om:observedProperty>
+			<swe:CompositePhenomenon gml:id="cpid0" dimension="1">
+				<gml:name>resultComponents</gml:name>
+				<swe:component xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
+				<swe:component xlink:href="urn:ogc:def:property:OGC:temperature" />
+				<swe:component xlink:href="urn:ogc:def:property:OGC:windSpeed" />
+				<swe:component xlink:href="urn:ogc:def:property:OGC:windDirection" />
+				<swe:component xlink:href="urn:ogc:def:property:OGC:rainRate" />
+			</swe:CompositePhenomenon>
+		</om:observedProperty>
+
+		<om:featureOfInterest>
+			<gml:FeatureCollection>
+				<gml:featureMember>
+					<sa:SamplingPoint gml:id="AllTypesFoi">
+						<gml:name>AllTypesFoi</gml:name>
+						<sa:sampledFeature xlink:href=""/>
+						<sa:position>
+							<gml:Point>
+								<gml:pos srsName="urn:ogc:def:crs:EPSG::4326">52.9 7.52</gml:pos>
+							</gml:Point>
+						</sa:position>
+					</sa:SamplingPoint>
+				</gml:featureMember>
+			</gml:FeatureCollection>
+		</om:featureOfInterest>
+
+		<om:result>
+			<swe:DataArray>
+
+				<swe:elementCount>
+					<swe:Count>
+						<swe:value>{COUNT}</swe:value>
+					</swe:Count>
+				</swe:elementCount>
+
+				<swe:elementType name="Components">
+					<swe:DataRecord>
+						<swe:field name="time">
+							<swe:Time definition="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
+						</swe:field>
+						<swe:field name="feature">
+							<swe:Text definition="http://www.opengis.net/def/property/OGC/0/FeatureOfInterest" />
+						</swe:field>
+						<swe:field name="temperature">
+							<swe:Quantity definition="urn:ogc:def:property:OGC:temperature" />
+						</swe:field>
+						<swe:field name="windSpeed">
+							<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed" />
+						</swe:field>
+						<swe:field name="windDirection">
+							<swe:Quantity definition="urn:ogc:def:property:OGC:windDirection" />
+						</swe:field>
+						<swe:field name="rainRate">
+							<swe:Quantity definition="urn:ogc:def:property:OGC:rainRate" />
+						</swe:field>
+					</swe:DataRecord>
+				</swe:elementType>
+
+				<swe:encoding>
+					<swe:TextBlock decimalSeparator="." tokenSeparator=","  blockSeparator=";" />
+				</swe:encoding>
+
+				<swe:values>
+				{VALUES}
+				</swe:values>
+
+			</swe:DataArray>
+		</om:result>
+	</om:Observation>
+</InsertObservation>
