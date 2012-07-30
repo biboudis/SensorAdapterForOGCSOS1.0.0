@@ -35,8 +35,8 @@ public class Configuration {
 	}
 
 	private void loadProps() {
-		InputStream in = this.getClass().getResourceAsStream(
-				"/config.properties");
+		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(
+				"config/config.properties");
 		try {
 			configProp.load(in);
 		} catch (IOException e) {

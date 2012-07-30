@@ -10,27 +10,29 @@
  ******************************************************************************/
 package adapter.utils;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Properties;
 
 public class FileUtils {
 	
+	public static Properties pathProperties = null;
+	
 	public static String readFileAsString(String filePath) throws java.io.IOException {
-		byte[] buffer = new byte[(int) new File(filePath).length()];
-		BufferedInputStream f = null;
-		try {
-			f = new BufferedInputStream(new FileInputStream(filePath));
-			f.read(buffer);
-		} finally {
-			if (f != null)
-				try {
-					f.close();
-				} catch (IOException ignored) {
-				}
+		
+		pathProperties = new Properties();
+		
+		InputStream configStream = pathProperties.getClass().getResourceAsStream(filePath);
+		BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+		
+		String line;
+		StringBuffer result = new StringBuffer();
+		while ((line = configReader.readLine()) != null) {
+			result.append(line);
 		}
-		return new String(buffer);
+		
+		return result.toString();	
 	}
 }
 
