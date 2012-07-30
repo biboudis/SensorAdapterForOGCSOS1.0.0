@@ -32,13 +32,18 @@ public class DavisSensorData {
 	public String LastUpdated;
 	
 	final DecimalFormat decimalFormat;
+	final SimpleDateFormat simpleDateFormat;
 	final String insertObsTemplate;
 	
 	public DavisSensorData(String template) {
-		this.insertObsTemplate = template;
+		this.insertObsTemplate = template.replaceAll("\\{OWNER\\}", Configuration.getInstance().getValue("sos.service.owner"))
+										 .replaceAll("\\{UNIQUE_ID\\}", Configuration.getInstance().getValue("sos.service.uniqueId"));
+		
 		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.ENGLISH);
 		otherSymbols.setDecimalSeparator('.');
+		
 		decimalFormat = new DecimalFormat("#.##", otherSymbols);
+		simpleDateFormat = new SimpleDateFormat(Configuration.getInstance().getValue("sos.format.insertdate"));
 	}
 	
 	public synchronized boolean checkTimestamps(String LastUpdatedCheck){
@@ -77,13 +82,13 @@ public class DavisSensorData {
 	public String toInsertObservationFormat()
 	{
 		String insertObsTemplateCopy = new String(insertObsTemplate);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-				Configuration.getInstance().getValue("sos.format.insertdate"));
+		
 		Date dateTimeNow = new Date();
 
-		insertObsTemplateCopy = insertObsTemplateCopy.replaceAll("\\{TIME\\}",	simpleDateFormat.format(dateTimeNow));
-		insertObsTemplateCopy = insertObsTemplateCopy.replaceAll("\\{COUNT\\}",	"1");
-		insertObsTemplateCopy = insertObsTemplateCopy.replaceAll("\\{VALUES\\}", String.format(Configuration.getInstance().getValue("sos.format.value"),
+		insertObsTemplateCopy = insertObsTemplateCopy
+				.replaceAll("\\{TIMESTAMP\\}",	simpleDateFormat.format(dateTimeNow))
+				.replaceAll("\\{COUNT\\}",	"1")
+				.replaceAll("\\{VALUES\\}", String.format(Configuration.getInstance().getValue("sos.format.value"),
 						this.LastUpdated, 
 						this.TemperatureOut, 
 						this.WindSpeed,

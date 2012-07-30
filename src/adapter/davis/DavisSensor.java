@@ -78,17 +78,18 @@ public class DavisSensor extends AbstractSensor implements SensorObservationServ
 		this.identifier = identifier;
 		
 		try {
-			this.registerMessage = 
-					FileUtils.readFileAsString(
+			registerMessage = FileUtils.readFileAsString(
 						Configuration.getInstance().getValue("sos.service.templates") + 
 						Configuration.getInstance().getValue("sos.service.templates.register"));
 			
-			this.insertObservationTemplate =
-					FileUtils.readFileAsString(
+			registerMessage = registerMessage.replaceAll("\\{OWNER\\}", Configuration.getInstance().getValue("sos.service.owner"))
+											 .replaceAll("\\{UNIQUE_ID\\}", Configuration.getInstance().getValue("sos.service.uniqueId"));
+			
+			insertObservationTemplate =	FileUtils.readFileAsString(
 						Configuration.getInstance().getValue("sos.service.templates") + 
 						Configuration.getInstance().getValue("sos.service.templates.insert"));
 					
-			this.davisData = new DavisSensorData(insertObservationTemplate);	
+			davisData = new DavisSensorData(insertObservationTemplate);	
 		} catch (IOException e) {
 			throw new ConfigurationException(e);
 		}

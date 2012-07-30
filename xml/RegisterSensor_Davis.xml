@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RegisterSensor xmlns="http://www.opengis.net/sos/1.0"
-	xmlns:swe="http://www.opengis.net/swe/1.0.1"
-	xmlns:ows="http://www.opengeospatial.net/ows"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:gml="http://www.opengis.net/gml"
-	xmlns:ogc="http://www.opengis.net/ogc"
-	xmlns:om="http://www.opengis.net/om/1.0"
-	xmlns:sml="http://www.opengis.net/sensorML/1.0.1"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:ows="http://www.opengeospatial.net/ows"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml"
+	xmlns:ogc="http://www.opengis.net/ogc" xmlns:om="http://www.opengis.net/om/1.0"
+	xmlns:sml="http://www.opengis.net/sensorML/1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.opengis.net/sos/1.0
 	http://schemas.opengis.net/sos/1.0.0/sosRegisterSensor.xsd
 	http://www.opengis.net/om/1.0
@@ -25,7 +21,7 @@
 						<sml:IdentifierList>
 							<sml:identifier>
 								<sml:Term definition="urn:ogc:def:identifier:OGC:uniqueID">
-									<sml:value>urn:ogc:object:feature:sensor:IDIRA:Davis-Weather-Station-1
+									<sml:value>urn:ogc:object:feature:sensor:{OWNER}:{UNIQUE_ID}
 									</sml:value>
 								</sml:Term>
 							</sml:identifier>
@@ -35,19 +31,14 @@
 					<!-- sml:capabilities element has to contain status and mobility information -->
 					<sml:capabilities>
 						<swe:SimpleDataRecord>
-							<!--
-								status indicates, whether sensor is collecting data at the
-								moment (true) or not (false)
-							-->
+							<!-- status indicates, whether sensor is collecting data at the moment 
+								(true) or not (false) -->
 							<swe:field name="status">
 								<swe:Boolean>
 									<swe:value>true</swe:value>
 								</swe:Boolean>
 							</swe:field>
-							<!--
-								status indicates, whether sensor is mobile (true) or fixed
-								(false)
-							-->
+							<!-- status indicates, whether sensor is mobile (true) or fixed (false) -->
 							<swe:field name="mobile">
 								<swe:Boolean>
 									<swe:value>false</swe:value>
@@ -60,7 +51,7 @@
 					<sml:position name="sensorPosition">
 						<swe:Position referenceFrame="urn:ogc:def:crs:EPSG::4326">
 							<swe:location>
-								<swe:Vector gml:id="tablet1-RSSI_location">
+								<swe:Vector gml:id="{UNIQUE_ID}_location">
 									<swe:coordinate name="easting">
 										<swe:Quantity>
 											<swe:uom code="degree" />
@@ -90,41 +81,41 @@
 							<sml:output name="temperature">
 								<swe:Quantity definition="urn:ogc:def:property:OGC:temperature">
 									<gml:metaDataProperty>
-											<offering>
-												<id>DAVIS_OFFERING</id>
-											</offering>
+										<offering>
+											<id>DAVIS_OFFERING</id>
+										</offering>
 									</gml:metaDataProperty>
-									<swe:uom code="cel"/>
+									<swe:uom code="cel" />
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="windSpeed">
 								<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed">
 									<gml:metaDataProperty>
-											<offering>
-												<id>DAVIS_OFFERING</id>
-											</offering>
-									</gml:metaDataProperty>									
-									<swe:uom code="m/s"/>
+										<offering>
+											<id>DAVIS_OFFERING</id>
+										</offering>
+									</gml:metaDataProperty>
+									<swe:uom code="m/s" />
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="windDirection">
 								<swe:Quantity definition="urn:ogc:def:property:OGC:windDirection">
 									<gml:metaDataProperty>
-											<offering>
-												<id>DAVIS_OFFERING</id>
-											</offering>
-									</gml:metaDataProperty>										
-									<swe:uom code="deg"/> 
+										<offering>
+											<id>DAVIS_OFFERING</id>
+										</offering>
+									</gml:metaDataProperty>
+									<swe:uom code="deg" />
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="rainRate">
 								<swe:Quantity definition="urn:ogc:def:property:OGC:rainRate">
 									<gml:metaDataProperty>
-											<offering>
-												<id>DAVIS_OFFERING</id>
-											</offering>
-									</gml:metaDataProperty>										
-									<swe:uom code="mm/hr"/> 
+										<offering>
+											<id>DAVIS_OFFERING</id>
+										</offering>
+									</gml:metaDataProperty>
+									<swe:uom code="mm/hr" />
 								</swe:Quantity>
 							</sml:output>
 						</sml:OutputList>
@@ -134,13 +125,14 @@
 		</sml:SensorML>
 	</SensorDescription>
 
-	<!-- ObservationTemplate parameter; this has to be an empty measurement at the moment -->
+	<!-- ObservationTemplate parameter; this has to be an empty measurement 
+		at the moment -->
 	<ObservationTemplate>
 		<om:GeometryObservation>
-			<om:samplingTime/>
-			<om:procedure/>
-			<om:observedProperty/>
-			<om:featureOfInterest/>
+			<om:samplingTime />
+			<om:procedure />
+			<om:observedProperty />
+			<om:featureOfInterest />
 			<om:result uom=""></om:result>
 		</om:GeometryObservation>
 	</ObservationTemplate>
