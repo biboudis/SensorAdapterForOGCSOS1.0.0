@@ -25,6 +25,7 @@
 				<gml:name>resultComponents</gml:name>
 				<swe:component xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
 				<swe:component xlink:href="urn:ogc:def:property:OGC:temperature" />
+				<swe:component xlink:href="urn:ogc:def:property:OGC:humidity" />
 				<swe:component xlink:href="urn:ogc:def:property:OGC:windSpeed" />
 				<swe:component xlink:href="urn:ogc:def:property:OGC:windDirection" />
 				<swe:component xlink:href="urn:ogc:def:property:OGC:rainRate" />
@@ -62,11 +63,13 @@
 							<swe:Time definition="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
 						</swe:field>
 						<swe:field name="feature">
-							<swe:Text
-								definition="http://www.opengis.net/def/property/OGC/0/FeatureOfInterest" />
+							<swe:Text definition="http://www.opengis.net/def/property/OGC/0/FeatureOfInterest" />
 						</swe:field>
 						<swe:field name="temperature">
 							<swe:Quantity definition="urn:ogc:def:property:OGC:temperature" />
+						</swe:field>
+						<swe:field name="humidity">
+							<swe:Quantity definition="urn:ogc:def:property:OGC:humidity" />
 						</swe:field>
 						<swe:field name="windSpeed">
 							<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed" />

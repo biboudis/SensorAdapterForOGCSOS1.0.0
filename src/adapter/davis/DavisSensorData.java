@@ -22,8 +22,8 @@ import adapter.Configuration;
 
 public class DavisSensorData {
 	
-	public short TemperatureOut;
-	public short TemperatureIn;
+	public double TemperatureOut;
+	public double TemperatureIn;
 	public byte HumidityOut;
 	public byte HumidityIn;
 	public byte WindSpeed;
@@ -65,8 +65,8 @@ public class DavisSensorData {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Configuration.getInstance().getValue("sos.format.insertdate"));
 		Date dateTimeNow = new Date();
 
-		this.TemperatureOut = (short) (0.555 * (wrapped.getShort(12) / 10 - 32));
-		this.TemperatureIn = (short) (0.555 * (wrapped.getShort(9) / 10 - 32));
+		this.TemperatureOut = (double) (0.555 * (wrapped.getShort(12) / 10 - 32));
+		this.TemperatureIn = (double) (0.555 * (wrapped.getShort(9) / 10 - 32));
 		this.HumidityIn = wrapped.get(11);
 		this.HumidityOut = wrapped.get(33);
 		this.WindSpeed = wrapped.get(14);
@@ -90,7 +90,8 @@ public class DavisSensorData {
 				.replaceAll("\\{COUNT\\}",	"1")
 				.replaceAll("\\{VALUES\\}", String.format(Configuration.getInstance().getValue("sos.format.value"),
 						this.LastUpdated, 
-						this.TemperatureOut, 
+						decimalFormat.format(this.TemperatureOut), 
+						this.HumidityOut,
 						this.WindSpeed,
 						this.WindDirection, 
 						decimalFormat.format(this.RainRate)));

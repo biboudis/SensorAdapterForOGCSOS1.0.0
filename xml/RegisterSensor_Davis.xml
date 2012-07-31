@@ -88,6 +88,16 @@
 									<swe:uom code="cel" />
 								</swe:Quantity>
 							</sml:output>
+							<sml:output name="humidity">
+								<swe:Quantity definition="urn:ogc:def:property:OGC:humidity">
+									<gml:metaDataProperty>
+										<offering>
+											<id>DAVIS_OFFERING</id>
+										</offering>
+									</gml:metaDataProperty>
+									<swe:uom code="%" />
+								</swe:Quantity>
+							</sml:output>
 							<sml:output name="windSpeed">
 								<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed">
 									<gml:metaDataProperty>
