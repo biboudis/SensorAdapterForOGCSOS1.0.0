@@ -80,14 +80,12 @@ public class DavisSensorData {
 	 * Returns the OGC representation of a DAVIS data packet to insert observation XML - string representation.
 	 * @return The XML - string representation.
 	 */
-	public String toInsertObservationFormat()
+	public synchronized String toInsertObservationFormat()
 	{
 		String insertObsTemplateCopy = new String(insertObsTemplate);
-		
-		Date dateTimeNow = new Date();
 
 		insertObsTemplateCopy = insertObsTemplateCopy
-				.replaceAll("\\{TIMESTAMP\\}",	simpleDateFormat.format(dateTimeNow))
+				.replaceAll("\\{TIMESTAMP\\}",	this.LastUpdated)
 				.replaceAll("\\{VALUES\\}", String.format(Configuration.getInstance().getValue("sos.format.value"),
 						this.LastUpdated,
 						Configuration.getInstance().getValue("sos.service.foi"),
