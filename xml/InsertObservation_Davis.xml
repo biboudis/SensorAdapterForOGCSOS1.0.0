@@ -24,19 +24,19 @@
 				dimension="1">
 				<gml:name>resultComponents</gml:name>
 				<swe:component xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" />
-				<swe:component xlink:href="urn:ogc:def:property:OGC:temperature" />
-				<swe:component xlink:href="urn:ogc:def:property:OGC:humidity" />
-				<swe:component xlink:href="urn:ogc:def:property:OGC:windSpeed" />
-				<swe:component xlink:href="urn:ogc:def:property:OGC:windDirection" />
-				<swe:component xlink:href="urn:ogc:def:property:OGC:rainRate" />
+				<swe:component xlink:href="urn:ogc:def:phenomenon:OGC:1.0.30:temperature" />
+				<swe:component xlink:href="urn:ogc:def:phenomenon:OGC:1.0.30:humidity" />
+				<swe:component xlink:href="urn:ogc:def:phenomenon:OGC:1.0.30:windSpeed" />
+				<swe:component xlink:href="urn:ogc:def:phenomenon:OGC:1.0.30:windDirection" />
+				<swe:component xlink:href="urn:ogc:def:phenomenon:OGC:1.0.30:rainRate" />
 			</swe:CompositePhenomenon>
 		</om:observedProperty>
 
 		<om:featureOfInterest>
 			<gml:FeatureCollection>
 				<gml:featureMember>
-					<sa:SamplingPoint gml:id="AllTypesFoi">
-						<gml:name>AllTypesFoi</gml:name>
+					<sa:SamplingPoint gml:id="{FEATURE_OF_INTEREST}">
+						<gml:name>{FEATURE_OF_INTEREST}</gml:name>
 						<sa:sampledFeature xlink:href="" />
 						<sa:position>
 							<gml:Point>
@@ -53,7 +53,7 @@
 
 				<swe:elementCount>
 					<swe:Count>
-						<swe:value>{COUNT}</swe:value>
+						<swe:value>1</swe:value>
 					</swe:Count>
 				</swe:elementCount>
 
@@ -66,19 +66,19 @@
 							<swe:Text definition="http://www.opengis.net/def/property/OGC/0/FeatureOfInterest" />
 						</swe:field>
 						<swe:field name="temperature">
-							<swe:Quantity definition="urn:ogc:def:property:OGC:temperature" />
+							<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:temperature" />
 						</swe:field>
 						<swe:field name="humidity">
-							<swe:Quantity definition="urn:ogc:def:property:OGC:humidity" />
+							<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:humidity" />
 						</swe:field>
 						<swe:field name="windSpeed">
-							<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed" />
+							<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:windSpeed" />
 						</swe:field>
 						<swe:field name="windDirection">
-							<swe:Quantity definition="urn:ogc:def:property:OGC:windDirection" />
+							<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:windDirection" />
 						</swe:field>
 						<swe:field name="rainRate">
-							<swe:Quantity definition="urn:ogc:def:property:OGC:rainRate" />
+							<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:rainRate" />
 						</swe:field>
 					</swe:DataRecord>
 				</swe:elementType>

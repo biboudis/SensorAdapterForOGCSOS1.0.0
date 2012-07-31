@@ -37,7 +37,8 @@ public class DavisSensorData {
 	
 	public DavisSensorData(String template) {
 		this.insertObsTemplate = template.replaceAll("\\{OWNER\\}", Configuration.getInstance().getValue("sos.service.owner"))
-										 .replaceAll("\\{UNIQUE_ID\\}", Configuration.getInstance().getValue("sos.service.uniqueId"));
+										 .replaceAll("\\{UNIQUE_ID\\}", Configuration.getInstance().getValue("sos.service.uniqueId"))
+										 .replaceAll("\\{FEATURE_OF_INTEREST\\}", Configuration.getInstance().getValue("sos.service.foi"));
 		
 		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.ENGLISH);
 		otherSymbols.setDecimalSeparator('.');
@@ -87,9 +88,9 @@ public class DavisSensorData {
 
 		insertObsTemplateCopy = insertObsTemplateCopy
 				.replaceAll("\\{TIMESTAMP\\}",	simpleDateFormat.format(dateTimeNow))
-				.replaceAll("\\{COUNT\\}",	"1")
 				.replaceAll("\\{VALUES\\}", String.format(Configuration.getInstance().getValue("sos.format.value"),
-						this.LastUpdated, 
+						this.LastUpdated,
+						Configuration.getInstance().getValue("sos.service.foi"),
 						decimalFormat.format(this.TemperatureOut), 
 						this.HumidityOut,
 						this.WindSpeed,

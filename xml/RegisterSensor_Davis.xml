@@ -79,7 +79,7 @@
 					<sml:outputs>
 						<sml:OutputList>
 							<sml:output name="temperature">
-								<swe:Quantity definition="urn:ogc:def:property:OGC:temperature">
+								<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:temperature">
 									<gml:metaDataProperty>
 										<offering>
 											<id>DAVIS_OFFERING</id>
@@ -89,7 +89,7 @@
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="humidity">
-								<swe:Quantity definition="urn:ogc:def:property:OGC:humidity">
+								<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:humidity">
 									<gml:metaDataProperty>
 										<offering>
 											<id>DAVIS_OFFERING</id>
@@ -99,7 +99,7 @@
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="windSpeed">
-								<swe:Quantity definition="urn:ogc:def:property:OGC:windSpeed">
+								<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:windSpeed">
 									<gml:metaDataProperty>
 										<offering>
 											<id>DAVIS_OFFERING</id>
@@ -109,7 +109,7 @@
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="windDirection">
-								<swe:Quantity definition="urn:ogc:def:property:OGC:windDirection">
+								<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:windDirection">
 									<gml:metaDataProperty>
 										<offering>
 											<id>DAVIS_OFFERING</id>
@@ -119,7 +119,7 @@
 								</swe:Quantity>
 							</sml:output>
 							<sml:output name="rainRate">
-								<swe:Quantity definition="urn:ogc:def:property:OGC:rainRate">
+								<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:1.0.30:rainRate">
 									<gml:metaDataProperty>
 										<offering>
 											<id>DAVIS_OFFERING</id>
